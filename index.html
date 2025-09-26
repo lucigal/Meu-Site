@@ -1,69 +1,243 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Tomorrow - Atividade Aula 3</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <title>Curso de Gerência de Configuração de Software (GCS)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Globais */
+        :root {
+            --cor-primaria: #0077b6; /* Azul moderno */
+            --cor-secundaria: #48cae4; /* Azul claro para destaque */
+            --cor-fundo: #f8f9fa; /* Fundo muito claro */
+            --cor-texto: #333; /* Texto escuro */
+            --cor-clara: #ffffff; /* Branco */
+            --sombra-leve: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. Cabeçalho (Header) */
+        .header {
+            background-color: var(--cor-clara);
+            box-shadow: var(--sombra-leve);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--cor-texto);
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cor-primaria);
+        }
+
+        /* 2. Seção Principal (Hero) */
+        .hero {
+            background-color: var(--cor-primaria);
+            color: var(--cor-clara);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto);
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: #00b4d8; /* Um tom mais escuro de secundária */
+            transform: translateY(-2px);
+        }
+
+        /* 3. Seção de Benefícios */
+        .beneficios {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .beneficios h2 {
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--cor-primaria);
+        }
+
+        .card-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: var(--cor-clara);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--sombra-leve);
+            width: calc(33% - 20px);
+            min-width: 280px;
+            text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: var(--cor-secundaria);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--cor-secundaria);
+            padding-bottom: 5px;
+        }
+
+        /* 4. Rodapé (Footer) */
+        .footer {
+            background-color: var(--cor-texto);
+            color: var(--cor-clara);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade Básica */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none; /* Em um cenário real, você usaria um menu sanduíche */
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        
-        <header>
-            <h1>> Projeto Tomorrow_</h1>
-            <h2>Chamada e Atividade da Aula 3</h2>
-        </header>
-
-        <div class="inputs">
-            <input type="number" id="num1" placeholder="VALOR 1">
-            <input type="number" id="num2" placeholder="VALOR 2">
+    <header class="header">
+        <div class="container nav">
+            <a href="#" class="logo">ConfigMaster</a>
+            <nav class="nav-links">
+                <a href="#sobre">Sobre o Curso</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#inscreva-se">Inscrição</a>
+            </nav>
         </div>
-		
-		      <div class="resultado-container">
-            <p id="resultado">RESULTADO:</p>
+    </header>
+
+    <section class="hero" id="sobre">
+        <div class="container">
+            <h1>Domine a Gerência de Configuração de Software (GCS)</h1>
+            <p>Aprenda as práticas essenciais para gerenciar mudanças, versões e builds de software com eficiência e segurança.</p>
+            <a href="#inscreva-se" class="cta-button">Inscreva-se Agora e Garanta Sua Vaga!</a>
         </div>
+    </section>
 
-        <div class="botoes-container">
-            <button id="btn-aluno1" class="operacao">SOMA (JOHN DOE)</button>
-            <button id="btn-aluno2" class="operacao">SUBTRAÇÃO (NEILANE)</button>
-            <button id="btn-aluno3" class="operacao">FEATURES (PROGRAMADOR 3)</button>
-            <button id="btn-aluno4" class="operacao">FEATURES (PROGRAMADOR 4)</button>
-            <button id="btn-aluno5" class="operacao">POTENCIA (lucigal)</button>
-            <button id="btn-aluno6" class="operacao">FEATURES (PROGRAMADOR 6)</button>
-            <button id="btn-aluno7" class="operacao">FEATURES (PROGRAMADOR 7)</button>
-            <button id="btn-aluno8" class="operacao">FEATURES (PROGRAMADOR 8)</button>
-            <button id="btn-aluno9" class="operacao">FEATURES (PROGRAMADOR 9)</button>
-            <button id="btn-aluno10" class="operacao">FEATURES (PROGRAMADOR 10)</button>
-            <button id="btn-aluno11" class="operacao">FEATURES (PROGRAMADOR 11)</button>
-            <button id="btn-aluno12" class="operacao">FEATURES (PROGRAMADOR 12)</button>
-            <button id="btn-aluno13" class="operacao">FEATURES (PROGRAMADOR 13)</button>
-            <button id="btn-aluno14" class="operacao">FEATURES (PROGRAMADOR 14)</button>
-            <button id="btn-aluno15" class="operacao">FEATURES (PROGRAMADOR 15)</button>
-            <button id="btn-aluno16" class="operacao">FEATURES (PROGRAMADOR 16)</button>
-            <button id="btn-aluno17" class="operacao">FEATURES (PROGRAMADOR 17)</button>
-            <button id="btn-aluno18" class="operacao">FEATURES (PROGRAMADOR 18)</button>
-            <button id="btn-aluno19" class="operacao">FEATURES (PROGRAMADOR 19)</button>
-            <button id="btn-aluno20" class="operacao">FEATURES (PROGRAMADOR 20)</button>
-            <button id="btn-aluno21" class="operacao">FEATURES (PROGRAMADOR 21)</button>
-            <button id="btn-aluno22" class="operacao">FEATURES (PROGRAMADOR 22)</button>
-            <button id="btn-aluno23" class="operacao">FEATURES (PROGRAMADOR 23)</button>
-            <button id="btn-aluno24" class="operacao">CELSIUS P/ FAHRENHEIT (CLAUDIA)</button>
-            <button id="btn-aluno25" class="operacao">FEATURES (PROGRAMADOR 25)</button>
-            <button id="btn-aluno26" class="operacao">FEATURES (PROGRAMADOR 26)</button>
-            <button id="btn-aluno27" class="operacao">FEATURES (PROGRAMADOR 27)</button>
-            <button id="btn-aluno28" class="operacao">FEATURES (PROGRAMADOR 28)</button>
-            <button id="btn-aluno29" class="operacao">FEATURES (PROGRAMADOR 29)</button>
-            <button id="btn-aluno30" class="operacao">FEATURES (PROGRAMADOR 30)</button>
+    <section class="beneficios" id="beneficios">
+        <div class="container">
+            <h2>O que você vai aprender?</h2>
+            <div class="card-grid">
+                
+                <div class="card">
+                    <h3>Versionamento Avançado</h3>
+                    <p>Dominar ferramentas como Git e estratégias de branching (GitFlow, Trunk-Based) para um controle de código impecável.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Automação de Build e Deploy</h3>
+                    <p>Integrar o GCS com pipelines de CI/CD (Continuous Integration/Deployment) usando Jenkins, GitLab CI ou GitHub Actions.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Gerenciamento de Mudanças</h3>
+                    <p>Implementar políticas e processos para rastrear, aprovar e controlar todas as alterações no seu ambiente de software.</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-  
+    <section class="hero" id="inscreva-se" style="background-color: var(--cor-secundaria); color: var(--cor-texto); padding: 60px 0;">
+        <div class="container">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Pronto para Elevar Seu Nível Profissional?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">Vagas limitadas! Clique e comece sua jornada em GCS hoje.</p>
+            <a href="URL_DA_SUA_PAGINA_DE_PAGAMENTO" class="cta-button" style="background-color: var(--cor-primaria); color: var(--cor-clara);">QUERO ME INSCREVER</a>
+        </div>
+    </section>
 
-    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 ConfigMaster Treinamentos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
-    <script src="js/script.js"></script>
 </body>
+</html>
 </html>
